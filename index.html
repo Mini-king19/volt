@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOLT — Магазин техніки</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">VOLT<span>.</span></a>
+  <nav>
+    <a href="#categories">Каталог</a>
+    <a href="#products">Товари</a>
+    <a href="#brands">Бренди</a>
+  </nav>
+  <input type="search" placeholder="Пошук товарів...">
+  <button>Увійти</button>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <small>ТЕХНОЛОГІЇ ДЛЯ ТВОГО ЖИТТЯ</small>
+    <h1>Твій світ.<br>Без зайвого шуму.</h1>
+    <p>Гаджети, які надихають. Технології, що змінюють щоденність.</p>
+    <a class="btn" href="#products">Переглянути каталог →</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=700" alt="Навушники">
+</section>
+
+<section id="categories">
+<h2>Категорії</h2>
+<div class="categories">
+  <div>📱<p>Смартфони</p></div>
+  <div>💻<p>Ноутбуки</p></div>
+  <div>🎧<p>Навушники</p></div>
+  <div>⌚<p>Годинники</p></div>
+  <div>🎮<p>Аксесуари</p></div>
+  <div>📺<p>Телевізори</p></div>
+</div>
+</section>
+
+<section id="products">
+<h2>Популярні товари</h2>
+<div class="products">
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500">
+<h3>iPhone 15</h3>
+<p>36 999 ₴</p>
+<button onclick="addCart('iPhone 15')">Купити</button>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500">
+<h3>MacBook Air</h3>
+<p>42 999 ₴</p>
+<button onclick="addCart('MacBook Air')">Купити</button>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500">
+<h3>AirPods Pro</h3>
+<p>9 499 ₴</p>
+<button onclick="addCart('AirPods Pro')">Купити</button>
+</article>
+
+<article class="card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
+<h3>Smart Watch</h3>
+<p>10 499 ₴</p>
+<button onclick="addCart('Smart Watch')">Купити</button>
+</article>
+
+</div>
+</section>
+
+<section class="banner">
+<h2>Наступний рівень твоєї гри</h2>
+<p>Збери свій ідеальний ігровий сетап!</p>
+</section>
+
+<section id="brands">
+<h2>Наші бренди</h2>
+<div class="brands">
+<span>Apple</span><span>SAMSUNG</span>
+<span>SONY</span><span>ASUS</span>
+<span>Logitech</span><span>Xiaomi</span>
+</div>
+</section>
+</main>
+
+<footer>
+<h2>VOLT.</h2>
+<p>Технології, які роблять життя простішим.</p>
+<p>© 2026 VOLT</p>
+</footer>
+
+<script>
+function addCart(product) {
+  alert("Товар " + product + " додано до кошика!");
+}
+</script>
+
+</body>
+</html>
