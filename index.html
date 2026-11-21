@@ -1,108 +1,370 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VOLT — Магазин техніки</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="VOLT — магазин сучасної техніки та гаджетів">
+  <title>VOLT — Магазин техніки</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header>
+<!-- ШАПКА САЙТУ -->
+<header class="header">
   <a class="logo" href="#">VOLT<span>.</span></a>
+
   <nav>
-    <a href="#categories">Каталог</a>
-    <a href="#products">Товари</a>
+    <a href="#">Головна</a>
+    <a href="#catalog">Каталог</a>
     <a href="#brands">Бренди</a>
   </nav>
-  <input type="search" placeholder="Пошук товарів...">
-  <button>Увійти</button>
+
+  <input
+    id="search"
+    type="search"
+    placeholder="Знайти товар..."
+  >
+
+  <button id="loginBtn">Увійти</button>
+
+  <button id="cartBtn">
+    🛒 Кошик (<span id="cartCount">0</span>)
+  </button>
 </header>
 
-<main>
-<section class="hero">
-  <div>
-    <small>ТЕХНОЛОГІЇ ДЛЯ ТВОГО ЖИТТЯ</small>
-    <h1>Твій світ.<br>Без зайвого шуму.</h1>
-    <p>Гаджети, які надихають. Технології, що змінюють щоденність.</p>
-    <a class="btn" href="#products">Переглянути каталог →</a>
-  </div>
-  <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=700" alt="Навушники">
-</section>
+<main class="container">
 
-<section id="categories">
-<h2>Категорії</h2>
-<div class="categories">
-  <div>📱<p>Смартфони</p></div>
-  <div>💻<p>Ноутбуки</p></div>
-  <div>🎧<p>Навушники</p></div>
-  <div>⌚<p>Годинники</p></div>
-  <div>🎮<p>Аксесуари</p></div>
-  <div>📺<p>Телевізори</p></div>
-</div>
-</section>
+  <!-- ГОЛОВНИЙ БАНЕР -->
+  <section class="hero">
+    <div>
+      <small>ТЕХНОЛОГІЇ ДЛЯ ТВОГО ЖИТТЯ</small>
 
-<section id="products">
-<h2>Популярні товари</h2>
-<div class="products">
+      <h1>
+        Твій світ.<br>
+        Без зайвого шуму.
+      </h1>
 
-<article class="card">
-<img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500">
-<h3>iPhone 15</h3>
-<p>36 999 ₴</p>
-<button onclick="addCart('iPhone 15')">Купити</button>
-</article>
+      <p>
+        Гаджети, які надихають.
+        Технології, що змінюють щоденність.
+        Обирай своє разом із VOLT!
+      </p>
 
-<article class="card">
-<img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500">
-<h3>MacBook Air</h3>
-<p>42 999 ₴</p>
-<button onclick="addCart('MacBook Air')">Купити</button>
-</article>
+      <a href="#catalog" class="mainBtn">
+        Переглянути каталог →
+      </a>
+    </div>
 
-<article class="card">
-<img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=500">
-<h3>AirPods Pro</h3>
-<p>9 499 ₴</p>
-<button onclick="addCart('AirPods Pro')">Купити</button>
-</article>
+    <img
+      src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800"
+      alt="Навушники"
+    >
+  </section>
 
-<article class="card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500">
-<h3>Smart Watch</h3>
-<p>10 499 ₴</p>
-<button onclick="addCart('Smart Watch')">Купити</button>
-</article>
+  <!-- ПЕРЕВАГИ -->
+  <section class="benefits">
+    <div>🚚 Швидка доставка</div>
+    <div>🛡️ Гарантія якості</div>
+    <div>💬 Підтримка покупців</div>
+    <div>💳 Зручна оплата</div>
+  </section>
 
-</div>
-</section>
+  <!-- КАТАЛОГ -->
+  <section id="catalog">
 
-<section class="banner">
-<h2>Наступний рівень твоєї гри</h2>
-<p>Збери свій ідеальний ігровий сетап!</p>
-</section>
+    <h2>Наш каталог ⚡</h2>
 
-<section id="brands">
-<h2>Наші бренди</h2>
-<div class="brands">
-<span>Apple</span><span>SAMSUNG</span>
-<span>SONY</span><span>ASUS</span>
-<span>Logitech</span><span>Xiaomi</span>
-</div>
-</section>
+    <p id="productCount"></p>
+
+    <div class="filters">
+
+      <select id="categoryFilter">
+        <option value="all">Усі категорії</option>
+        <option value="Смартфони">Смартфони</option>
+        <option value="Ноутбуки">Ноутбуки</option>
+        <option value="Навушники">Навушники</option>
+        <option value="Годинники">Годинники</option>
+        <option value="Планшети">Планшети</option>
+        <option value="Монітори">Монітори</option>
+        <option value="Аксесуари">Аксесуари</option>
+        <option value="Ігрова техніка">Ігрова техніка</option>
+      </select>
+
+      <select id="sortFilter">
+        <option value="popular">Популярні</option>
+        <option value="cheap">Від дешевих</option>
+        <option value="expensive">Від дорогих</option>
+        <option value="name">За назвою</option>
+      </select>
+
+    </div>
+
+    <!-- ТОВАРИ ДОДАЮТЬСЯ ЧЕРЕЗ JAVASCRIPT -->
+    <div id="products" class="products"></div>
+
+    <p id="emptyMessage" hidden>
+      На жаль, товарів не знайдено 😔
+    </p>
+
+  </section>
+
+  <!-- РЕКЛАМНИЙ БАНЕР -->
+  <section class="banner">
+    <h2>Наступний рівень твоєї гри 🎮</h2>
+    <p>
+      Збери свій ідеальний ігровий сетап разом із VOLT!
+    </p>
+  </section>
+
+  <!-- БРЕНДИ -->
+  <section id="brands">
+    <h2>Наші бренди</h2>
+
+    <div class="brands">
+      <span>Apple</span>
+      <span>SAMSUNG</span>
+      <span>SONY</span>
+      <span>ASUS</span>
+      <span>Logitech</span>
+      <span>Xiaomi</span>
+    </div>
+  </section>
+
 </main>
 
+<!-- ============================== -->
+<!-- КОШИК -->
+<!-- ============================== -->
+
+<div class="modal" id="cartModal" hidden>
+
+  <div class="modalBox">
+
+    <button class="closeBtn" data-close="cartModal">
+      ✕
+    </button>
+
+    <h2>🛒 Твій кошик</h2>
+
+    <div id="cartItems"></div>
+
+    <h3 id="cartTotal">
+      Разом: 0 ₴
+    </h3>
+
+    <!-- ОФОРМЛЕННЯ ЗАМОВЛЕННЯ -->
+
+    <form id="checkoutForm">
+
+      <h3>Оформлення замовлення</h3>
+
+      <input
+        name="name"
+        placeholder="Твоє ім'я"
+        required
+      >
+
+      <input
+        name="phone"
+        type="tel"
+        placeholder="+380..."
+        required
+      >
+
+      <input
+        name="address"
+        placeholder="Місто, вулиця, будинок"
+        required
+      >
+
+      <label for="payment">
+        Спосіб оплати:
+      </label>
+
+      <select name="payment" id="payment" required>
+
+        <option value="">
+          Обери спосіб оплати
+        </option>
+
+        <option value="Готівкою при отриманні">
+          💵 Готівкою при отриманні
+        </option>
+
+        <option value="Карткою при отриманні">
+          💳 Карткою при отриманні
+        </option>
+
+      </select>
+
+      <button type="submit" class="mainBtn">
+        Підтвердити замовлення
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+<!-- ============================== -->
+<!-- ВХІД / РЕЄСТРАЦІЯ -->
+<!-- ============================== -->
+
+<div class="modal" id="loginModal" hidden>
+
+  <div class="modalBox">
+
+    <button class="closeBtn" data-close="loginModal">
+      ✕
+    </button>
+
+    <h2>👤 Особистий кабінет</h2>
+
+    <p>
+      Увійди або створи свій демо-профіль VOLT.
+    </p>
+
+    <form id="loginForm">
+
+      <input
+        name="name"
+        placeholder="Твоє ім'я"
+        required
+      >
+
+      <input
+        name="email"
+        type="email"
+        placeholder="Електронна пошта"
+        required
+      >
+
+      <button type="submit" class="mainBtn">
+        Увійти / Зареєструватися
+      </button>
+
+    </form>
+
+    <div id="userProfile" hidden>
+
+      <p id="userInfo"></p>
+
+      <button id="logoutBtn">
+        Вийти з акаунта
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ============================== -->
+<!-- КНОПКА КОНСУЛЬТАНТА -->
+<!-- ============================== -->
+
+<button id="consultantBtn" class="consultantBtn">
+  💬 Консультант
+</button>
+
+<!-- ============================== -->
+<!-- ЧАТ КОНСУЛЬТАНТА -->
+<!-- ============================== -->
+
+<div id="chatWindow" class="chatWindow" hidden>
+
+  <div class="chatHeader">
+
+    <div>
+      <strong>⚡ VOLT Assistant</strong>
+      <small>Онлайн-консультант</small>
+    </div>
+
+    <button id="closeChat">✕</button>
+
+  </div>
+
+  <!-- ПОВІДОМЛЕННЯ -->
+
+  <div id="chatMessages" class="chatMessages">
+
+    <div class="botMessage">
+      Привіт! 👋 Я консультант VOLT!
+
+      Допоможу підібрати техніку,
+      знайти товар та відповісти на запитання.
+
+      Чим можу допомогти?
+    </div>
+
+  </div>
+
+  <!-- ШВИДКІ ЗАПИТАННЯ -->
+
+  <div id="chatQuickReplies" class="quickReplies">
+
+    <button type="button" data-question="Покажи смартфони">
+      📱 Смартфони
+    </button>
+
+    <button type="button" data-question="Покажи ноутбуки">
+      💻 Ноутбуки
+    </button>
+
+    <button type="button" data-question="Покажи навушники">
+      🎧 Навушники
+    </button>
+
+    <button type="button" data-question="Які є способи оплати?">
+      💳 Оплата
+    </button>
+
+    <button type="button" data-question="Що є у моєму кошику?">
+      🛒 Мій кошик
+    </button>
+
+  </div>
+
+  <!-- ПОЛЕ ВВЕДЕННЯ -->
+
+  <form id="chatForm">
+
+    <input
+      id="chatInput"
+      type="text"
+      placeholder="Напиши повідомлення..."
+      required
+    >
+
+    <button type="submit">
+      ➤
+    </button>
+
+  </form>
+
+</div>
+
+<!-- СПОВІЩЕННЯ -->
+
+<div id="toast" class="toast"></div>
+
+<!-- ПІДВАЛ -->
+
 <footer>
-<h2>VOLT.</h2>
-<p>Технології, які роблять життя простішим.</p>
-<p>© 2026 VOLT</p>
+  <h2 class="logo">VOLT<span>.</span></h2>
+
+  <p>
+    Технології, які роблять життя простішим.
+  </p>
+
+  <p>© 2026 VOLT. Усі права захищені.</p>
 </footer>
 
-<script>
-function addCart(product) {
-  alert("Товар " + product + " додано до кошика!");
-}
-</script>
+<!-- ПІДКЛЮЧЕННЯ JAVASCRIPT -->
+
+<script src="script.js"></script>
 
 </body>
 </html>
